@@ -1,5 +1,5 @@
 let fs= require ('fs')
-let dbMarcas =JSON.parse(fs.readFileSync('./data/concesionarias.json'))
+let dbMarcas =JSON.parse(fs.readFileSync('./data/concesionarias.json', 'utf-8'))
 
 
 const marcasController ={
@@ -8,18 +8,17 @@ const marcasController ={
             'consent-type':'text/plain;charset=utf-8'
         })        
         res.write('Nuestras marcas: ')
-        dbMarcas.foEach(function(concesionaria){
             let array=[];
-            res.send(concesionaria.auto)
-          concesionarias.autos.forEach(function(auto){
-            if(!array.incluides (auto.marca)){
-                array.push(auto.marca)
-            }
+            dbMarcas.forEach(function(concesionaria){
+                concesionaria.autos.forEach(function(auto){
+                if(!array.includes(auto.marca)){
+                    array.push(auto.marca)
+                }
                 
             })
             
         })
-            res.write('--MODELOS DE VEHICULOS--' + marca)
+            res.write('--MODELOS DE VEHICULOS--' )
             res.write('\n')
             array.forEach(function(arrays){
                 res.write('Marca:' + arrays + '\n' )
@@ -27,7 +26,7 @@ const marcasController ={
             
           })  
           
-            res.send(array)
+            res.end()
         
         
       },
@@ -67,4 +66,4 @@ const marcasController ={
 
 
 
-module.exports = marcas
+module.exports = marcasController 

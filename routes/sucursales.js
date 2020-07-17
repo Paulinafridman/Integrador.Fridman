@@ -1,7 +1,7 @@
-const exress= require ('express');
+const express= require ('express');
 const router = express.Router();
 
-const sucursalesController =require('../controller/sucursaleController')
+const sucursalesController =require('../controller/sucursalesController')
 
 router.get('/',sucursalesController.index)
 router.get('/:sucursal',sucursalesController.id);
